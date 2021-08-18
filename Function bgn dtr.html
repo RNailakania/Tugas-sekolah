@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       
+       <script>
+       var pilih = prompt('masukkan bangun datar')
+
+       if (pilih === 'Persegi') {
+           var sisi1 = prompt('masukkan angka')
+           var sisi2 = prompt('masukkan angka')
+           function hitungTambah(a,b){
+           var hasil = (a*b);
+           return hasil;
+           }
+           var nilai = hitungTambah(sisi1,sisi2);
+           document.write(nilai);
+
+       }else if(pilih === 'Persegi panjang'){
+           var p = prompt('masukkan panjang')
+           var l = prompt('masukkan lebar')
+           function hitungTambah(a,b){
+           var hasil = (a*b);
+           return hasil;
+           }
+           var nilai = hitungTambah(p,l);
+           document.write(nilai);
+
+       } else if(pilih === 'Jajar genjang'){
+           var a = prompt('masukkan alas')
+           var t = prompt('masukkan tinggi')
+           function hitungTambah(a,b){
+           var hasil = (a*b);
+           return hasil;
+           }
+           var nilai = hitungTambah(a,t);
+           document.write(nilai);
+          
+       } else if(pilih === 'Segitiga'){
+           var a = prompt('masukkan alas')
+           var t = prompt('masukkan tinggi')
+           function hitungTambah(a,b){
+           var hasil = (a*b);
+           return hasil;
+           }
+           var nilai = hitungTambah(1/2,a,t);
+           document.write(nilai);
+       }
+   </script>
+
+</body>
+</html>
