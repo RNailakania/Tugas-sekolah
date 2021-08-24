@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>WELCOME!</title>
+    <style>
+      .container{
+          width: 800px;
+      }
+  </style>
+  </head>
+  <body>
+
+    <div class="container">
+    <div class="form-group">
+      <label for="namasiswa">Nama Siswa</label>
+      <input type="email" class="form-control" id="txt_namasiswa">
+    </div>
+
+    <label for="kelas">Kelas</label>
+    <select class="form-control" id="txt_kelas">
+      <option value="X">X</option>
+      <option value="XI">XI</option>
+      <option value="XII">XII</option>
+    </select>
+
+    <div class="form-group">
+      <label for="umur">Umur</label>
+      <input type="email" class="form-control" id="txt_umur">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="txt_email" placeholder="name@gmail.com">
+
+    <div class="form-group">
+      <label for="alamat">Alamat</label>
+      <textarea class="form-control" id="txt_alamat" rows="3"></textarea>
+    </div>
+
+    <button class="btn btn-primary mt-4" onclick="add()">Simpan</button>
+
+    <table class="table class=p-3 mb-2 bg-light text-dark text-white mt-4">
+    <thead>
+      <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama Siswa</th>
+      <th scope="col">Kelas</th>
+      <th scope="col">Umur</th>
+      <th scope="col">Email</th>
+      <th scope="col">Alamat</th>
+      <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="tampilkan"></tbody>
+    </table> 
+    </div>
+
+    <script>
+     var namasiswa = ['V','JK']
+     var kelas = ['XI','X']
+     var umur = ['16','15']
+     var email = ['kimv@gmail.com','jjk@gmail.com']
+     var alamat = ['Jakarta','Seoul']
+     
+     var tampil = document.getElementById ('tampilkan')
+
+    function showData() {
+    tampil.innerHTML = ""
+
+    for(i = 0; i < namasiswa.length; i++){
+      nodata = i+1;
+      tampil.innerHTML += "<tr>"+
+      "<td>"+nodata+"</td>"+
+      "<td>"+namasiswa[i]+"</td>"+
+      "<td>"+kelas[i]+"</td>"+
+      "<td>"+umur[i]+"</td>"+
+      "<td>"+email[i]+"</td>"+
+      "<td>"+alamat[i]+"</td>"+
+      "<td>"+
+      "<button class='btn btn-secondary'onclick='edit("+ i +")'>Edit</button>"+
+      "<button class='btn btn-dark'onclick='hapus("+ i +")'>Hapus</button>"
+      "</td>"+
+      "</tr>"
+        }
+      }
+
+    showData()
+
+    function add(){
+      var namabaru = document.getElementById('txt_namasiswa').value
+      var kelasbaru = document.getElementById('txt_kelas').value
+      var umurbaru = document.getElementById('txt_umur').value
+      var emailbaru = document.getElementById('txt_email').value
+      var alamatbaru = document.getElementById('txt_alamat').value
+
+      namasiswa.push(namabaru)
+      kelas.push(kelasbaru)
+      umur.push(umurbaru)
+      email.push(emailbaru)
+      alamat.push(alamatbaru)
+
+    showData()
+    }
+
+    function hapus(i){
+      var namabaru = document.getElementById('txt_namasiswa').value
+      var kelasbaru = document.getElementById('txt_kelas').value
+      var umurbaru = document.getElementById('txt_umur').value
+      var emailbaru = document.getElementById('txt_email').value
+      var alamatbaru = document.getElementById('txt_alamat').value
+
+      namasiswa.splice(i,1)
+      kelas.splice(i,1)
+      alamat.splice(i,1)
+
+    showData()
+    }
+
+    function edit(id){
+      var ganti = prompt("Ganti Nama",namasiswa[id])
+      namasiswa[id] = ganti;
+      
+      var ganti = prompt("Ganti Kelas",kelas[id])
+      kelas[id] = ganti;
+
+      var ganti = prompt("Ganti Umur",umur[id])
+      umur[id] = ganti;
+      
+      var ganti = prompt("Ganti Email",email[id])
+      email[id] = ganti;
+      
+      var ganti = prompt("Ganti Alamat",alamat[id])
+      alamat[id] = ganti;
+      
+    showData()
+    }
+      
+  </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
