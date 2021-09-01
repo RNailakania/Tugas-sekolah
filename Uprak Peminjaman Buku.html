@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Hello, Reader!</title>
+    <style>
+    .jumbotron{
+        height: 300px;
+        background-image: url(https://images.pexels.com/photos/2908984/pexels-photo-2908984.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+        background-size: cover;
+        background-position-y: -50px;
+    }
+    .judullist{
+        height: 50px;
+    }
+    .card{
+      height: 600px 
+    }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container text-white">
+        <h1 class="display-4">List Buku</h1>
+        <p class="lead">Choose Your Book</p>
+    </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+    <div class="col-4">
+    <div class="judullist bg-dark rounded text-center text-white pt-2 mt-3">List buku yang dipinjam</div>
+
+    <div class="listkeranjang" id="listkeranjang"></div>
+
+    <p></p>
+
+    <div style="overflow-x: auto;">
+    <table width="100%">
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <a href="file:///C:/Users/BUNDA/a.html"><button class="btn btn-primary mt-3 btn-block">isi data</button></a>
+
+    </div>
+    <div class="col-8" id="listbuku">
+    </div>
+    </div>
+    </div>
+
+    <script>
+      
+      var buku = ['I Want To Die But I Want To Eat Tteokpokki','Ayah Menyayangi Hingga Akhir','Map of the Soul ‑ 7','Sebuah Seni Untuk Bersikap Bodo Amat','1 CM Between You and Me','Senja & Pagi','Reinventing Your Life','Almond','Epiphany','Human Acts']
+      var penulis = ['Baek Se Hee','Kirana Kejora','Leonard Cruz, Steven Buser, Murray Stein','Mark Manson','Kim Eun Ju','Alffy Rev dan Linka Angelia','Jeffrey E. Young, Ph.D dan Janet S. Klosko, Ph.D.','Sohn Won - Pyung','Reza Darmawangsa','Han Kang']
+      var gambar = ['https://girlsbeyond.com/wp-content/uploads/2020/09/49228706._SX1200_SY630_.jpg','https://upload.wikimedia.org/wikipedia/id/thumb/4/42/Ayah_Menyayangi_Tanpa_Akhir.jpeg/220px-Ayah_Menyayangi_Tanpa_Akhir.jpeg',
+      'http://prodimage.images-bn.com/pimages/9781630518509_p0_v2_s1200x630.jpg','https://upload.wikimedia.org/wikipedia/commons/4/4b/Sebuah-seni-untuk-bersikap-bodoh-amat.jpg',
+      'https://www.gramedia.com/blog/content/images/2021/06/1_CM_HUGGING_ESSAY.jpg','https://id-live-05.slatic.net/p/cab94af678fb94e725e54ed6f62a12ec.jpg_720x720q80.jpg_.webp',
+      'https://pbs.twimg.com/media/EaewoTNU0AAwG5G.jpg','https://ebooks.gramedia.com/ebook-covers/47191/image_highres/ID_AM2019MTH04AM.jpg','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610799886l/56684331._SX318_.jpg',
+      'https://images-eu.ssl-images-amazon.com/images/I/41oFCRSdW2L._SY291_BO1,204,203,200_QL40_ML2_.jpg']
+
+      var listbuku = document.getElementById('listbuku')
+      var listkeranjang = document.getElementById('listkeranjang')
+            
+      var buku_keranjang = []
+      var penulis_keranjang = []
+            
+      function showlistbuku() {
+      listbuku.innerHTML = ''
+        for (let i = 0; i < buku.length; i++) {
+        listbuku.innerHTML +='<div class="card float-left mr-3 mb-3" style="width: 18rem;">'+
+        '<img src="'+gambar[i]+'"class="card-img-top" alt="...">'+
+        '<div class="card-body">'+
+        '<h5 class="card-title">'+buku[i]+'</h5>'+
+        '<p class="card-text">'+penulis[i]+'</p>'+
+        '<a href="#" class="btn btn-primary" onclick="addlistitem('+i+')">Pinjam</a>'+
+        '</div>'+
+        '</div>'
+        }
+      }
+        function addlistitem(id) {
+        buku_keranjang.push(buku[id])
+        penulis_keranjang.push(penulis[id])
+          showlistkeranjang()  
+        }
+        function showlistkeranjang() {
+        listkeranjang.innerHTML=''
+          for (let i = 0; i <buku_keranjang.length; i++) {
+          listkeranjang.innerHTML += '<div class="card mt-4 mb-3" style="width: 22rem;">'+
+          '<div class="card-body">'+
+          '<h5 class="card-title">'+buku_keranjang[i]+'</h5>'+
+          '<p class="card-text">'+penulis_keranjang[i]+'</p>'+
+          '<p>Qty : 1</p>'+
+          '<a href="#" class="btn btn-danger float-right" onclick="deleteitem('+i+')">Delete</a>'+
+          '</div>'+
+          '</div>'
+        }
+      }
+        function deleteitem(id) {
+        buku_keranjang.splice(id,1)
+        penulis_keranjang.splice(id,1)
+        showlistkeranjang()
+      }
+        showlistbuku()
+            
+      </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
